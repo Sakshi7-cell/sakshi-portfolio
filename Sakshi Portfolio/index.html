@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Sakshi Maheshwari — Paintings</title>
+<meta name="description" content="Portfolio of Sakshi Maheshwari — paintings and custom artwork from Hapur." />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0f12;
+    --card:#0f1720;
+    --muted:#9aa4ae;
+    --accent:#e7b7c8;
+    --accent2:#f7dcb3;
+    --glass: rgba(255,255,255,0.03);
+    --radius:14px;
+    --maxw:1100px;
+    --shadow: 0 6px 18px rgba(2,6,23,0.6);
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    color-scheme: dark;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background: radial-gradient(1200px 500px at 10% 10%, rgba(231,183,200,0.06), transparent),var(--bg);
+    color:#f1e9ef;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.45;
+    padding:36px 20px;
+    display:flex;
+    justify-content:center;
+  }
+  .container{width:100%;max-width:var(--maxw)}
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+  .brand{display:flex;gap:14px;align-items:center}
+  .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;color:#111;font-size:20px;box-shadow:var(--shadow)}
+  h1{margin:0;font-size:20px}
+  .subtitle{font-size:13px;color:var(--muted);margin-top:4px}
+  nav{display:flex;gap:10px}
+  .btn{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,0.04);
+    padding:10px 14px;border-radius:10px;color:inherit;text-decoration:none;font-weight:600;font-size:14px;display:inline-flex;gap:8px;align-items:center
+  }
+  .btn-accent{background:linear-gradient(90deg,var(--accent2),var(--accent));color:#111;border:none}
+  .hero{display:grid;grid-template-columns:1fr 340px;gap:22px;align-items:start;margin-bottom:24px}
+  .card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.02)}
+  .intro h2{margin:0 0 8px 0}
+  .intro p{margin:0;color:var(--muted)}
+  .profile-pic{width:100%;height:260px;border-radius:10px;overflow:hidden}
+  .profile-pic img{width:100%;height:100%;object-fit:cover}
+  .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+  .chip{background:var(--glass);padding:8px 12px;border-radius:999px;color:var(--muted);font-weight:600;font-size:13px;border:1px solid rgba(255,255,255,0.02)}
+  .projects{margin-top:18px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .project{border-radius:12px;overflow:hidden;position:relative;cursor:pointer}
+  .project img{display:block;width:100%;height:220px;object-fit:cover;transform:scale(1);transition:transform .35s ease}
+  .project:hover img{transform:scale(1.03)}
+  .project .meta{position:absolute;left:10px;bottom:10px;background:linear-gradient(90deg, rgba(0,0,0,0.55), rgba(0,0,0,0.25));padding:8px 10px;border-radius:8px;font-weight:700}
+  form{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+  input,textarea{background:var(--glass);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:10px;color:#fff;font-size:14px}
+  textarea{min-height:110px;resize:vertical}
+  button[type=submit]{background:linear-gradient(90deg,var(--accent2),var(--accent));color:#111;border:none;padding:10px 14px;border-radius:8px;font-weight:700;cursor:pointer}
+  button[type=submit]:hover{opacity:0.95}
+  .success-message{display:none;margin-top:10px;color:var(--accent2);font-weight:600;opacity:0;transition:opacity .5s ease}
+  .success-message.visible{display:block;opacity:1}
+  .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(3,6,10,0.7);z-index:60}
+  .modal.open{display:flex}
+  .modal .inner{max-width:920px;width:92%;max-height:86%;background:transparent}
+  .lightbox-img{width:100%;height:auto;border-radius:12px;box-shadow:0 20px 40px rgba(2,6,23,0.6)}
+  @media (max-width:920px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.grid{grid-template-columns:1fr}.profile-pic{height:200px}}
+  footer{margin-top:18px;color:var(--muted);text-align:center;font-size:13px}
+  .project { opacity: 0; transform: translateY(8px); transition: transform .35s ease, opacity .5s ease; }
+  .project.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">SM</div>
+        <div>
+          <h1>Sakshi Maheshwari</h1>
+          <div class="subtitle">Whispers of emotion painted in color.</div>
+        </div>
+      </div>
+      <nav>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#custom">Custom Paintings</a>
+        <a class="btn btn-accent" href="mailto:sakshibhattar06@gmail.com?subject=Painting Inquiry&body=Hi Sakshi, I am interested in your paintings.">Email Me</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card intro">
+        <h2>Hi — I'm Sakshi</h2>
+        <p>I'm Sakshi Maheshwari from Hapur. I paint original paintings and create customised pieces on request. Browse my projects below — to buy or commission a custom piece, send me an email or use the form.</p>
+
+        <div class="skills">
+          <div class="chip">Acrylic</div>
+          <div class="chip">Canvas</div>
+          <div class="chip">Portraits</div>
+          <div class="chip">Commissions</div>
+        </div>
+
+        <div style="margin-top:18px">
+          <a class="btn btn-accent" href="mailto:sakshibhattar06@gmail.com?subject=Commission Request&body=Hi Sakshi, I would like to commission a painting.">Commission a Painting</a>
+        </div>
+
+        <div class="projects card" style="margin-top:18px;padding:14px" id="projects">
+          <h3 style="margin:0 0 10px 0">Projects</h3>
+          <div class="grid">
+            <div class="project" data-title="Landscape"><img src="WhatsApp Image 2025-11-02 at 7.26.45 AM.jpeg" alt="Landscape"/><div class="meta">Landscape — Oil on Canvas</div></div>
+            <div class="project" data-title="Portrait of an Old Man"><img src="WhatsApp Image 2025-11-02 at 7.26.45 AM (1).jpeg" alt="Portrait of an Old Man"/><div class="meta">Portrait of an Old Man — Charcoal on Paper</div></div>
+            <div class="project" data-title="Old Beauty"><img src="WhatsApp Image 2025-11-02 at 7.26.47 AM.jpeg" alt="Old Beauty"/><div class="meta">Old Beauty — Conceptual Mix Media on Paper</div></div>
+            <div class="project" data-title="Raamlalla"><img src="WhatsApp Image 2025-11-02 at 7.27.10 AM (1).jpeg" alt="Raamlalla"/><div class="meta">Raamlalla — Acrylic on Paper</div></div>
+            <div class="project" data-title="Untitled Portrait"><img src="WhatsApp Image 2025-11-02 at 7.27.25 AM.jpeg" alt="Untitled Portrait"/><div class="meta">Untitled Portrait — Watercolour</div></div>
+            <div class="project" data-title="Sunset"><img src="WhatsApp Image 2025-11-02 at 7.27.29 AM (1).jpeg" alt="Sunset"/><div class="meta">Sunset — Abstract Acrylic on Canvas</div></div>
+          </div>
+        </div>
+
+        <!-- ✅ Fixed Custom Paintings form -->
+        <div id="custom" class="card" style="margin-top:18px;padding:14px">
+          <h3 style="margin:0 0 10px 0">Custom Paintings</h3>
+          <p style="color:var(--muted);margin:0 0 10px 0">
+            Want something unique? I create custom paintings — portraits, sceneries or abstract. 
+            Fill out the form below and I'll reply with details and pricing.
+          </p>
+
+          <form id="contact-form" action="https://formspree.io/f/xrborner" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="_replyto" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Describe your custom painting idea" required></textarea>
+            <button type="submit" id="submit-btn">Send Request</button>
+            <div class="success-message" id="success-message">
+              Thank you! Your request has been sent successfully. 🎨
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <aside class="card" style="height:100%">
+        <div class="profile-pic">
+          <img src="WhatsApp Image 2025-11-02 at 7.26.47 AM.jpeg" alt="Old Beauty"/>
+        </div>
+
+        <div style="margin-top:14px">
+          <div style="font-size:13px;color:var(--muted)">Location</div>
+          <div style="font-weight:700;font-size:13px">Hapur, India</div>
+
+          <div style="margin-top:8px">
+            <a class="btn btn-accent" href="mailto:sakshibhattar06@gmail.com?subject=Painting Inquiry&body=Hi Sakshi, I am interested in your paintings.">Email Me</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Sakshi Maheshwari — Paintings & Commissions.
+    </footer>
+  </div>
+
+  <div class="modal" id="lightbox">
+    <div class="inner">
+      <img class="lightbox-img" id="lightbox-img" src="" alt="">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+        <div id="lightbox-title" style="font-weight:700"></div>
+        <div>
+          <a id="buy-email" class="btn btn-accent" href="">Buy / Enquire</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.project');
+    items.forEach((it, i) => setTimeout(() => it.classList.add('visible'), 120 * i));
+  });
+
+  const projects = document.querySelectorAll('.project');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const buyEmail = document.getElementById('buy-email');
+
+  projects.forEach(p => {
+    p.addEventListener('click', () => {
+      const img = p.querySelector('img');
+      const src = img.getAttribute('src');
+      const title = p.dataset.title || img.alt || 'Artwork';
+      lightboxImg.src = src;
+      lightboxTitle.textContent = title;
+      buyEmail.href = `mailto:sakshibhattar06@gmail.com?subject=Interested%20in%20${encodeURIComponent(title)}&body=Hi%20Sakshi,%0AI%27m%20interested%20in%20${encodeURIComponent(title)}.%20Please%20share%20details%20and%20price.`;
+      lightbox.classList.add('open');
+    });
+  });
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target.id === 'lightbox-img') {
+      lightbox.classList.remove('open');
+    }
+  });
+
+  // ✅ Formspree submission handler
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const successMessage = document.getElementById('success-message');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    const data = new FormData(form);
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        successMessage.classList.add('visible');
+        form.reset();
+        setTimeout(() => successMessage.classList.remove('visible'), 4000);
+      } else {
+        alert('Oops — there was a problem. Please try again.');
+      }
+    } catch {
+      alert('Network error — please try again.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Request';
+    }
+  });
+</script>
+</body>
+</html>
